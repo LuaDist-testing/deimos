@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Deimos Code Documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>deimos</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Fields">Fields</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul>
+  <li><strong>deimos</strong></li>
+  <li><a href="../modules/deimos.array.html">deimos.array</a></li>
+  <li><a href="../modules/deimos.class.html">deimos.class</a></li>
+  <li><a href="../modules/deimos.hash.html">deimos.hash</a></li>
+  <li><a href="../modules/deimos.utility.html">deimos.utility</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>deimos</code></h1>
+
+<p>This is the Deimos strong-typing library.</p>
+<p>
+
+ Deimos is a class system that uses metaprogramming to enforce strong
+ type constraints. The intended use is for validating configuration
+ files, untrusted user input, business objects that backend to
+ databases, web forms, and the like.
+
+ Odds are it can be easily abused into a true class system like LOOP
+ or Coat; however this isn't recommend as performance was never a 
+ serious consideration.</p>
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#x.any">x.any&nbsp;(default)</a></td>
+	<td class="summary">A type permitted to be anything, including nil.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x.string">x.string&nbsp;(default, nullable, pattern, max_length)</a></td>
+	<td class="summary">A type permitted to be a string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x.number">x.number&nbsp;(default, nullable, maximum, minimum)</a></td>
+	<td class="summary">A type containing a number, either integer or floating point.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x.bool">x.bool&nbsp;(default)</a></td>
+	<td class="summary">A boolean type.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x.class">x.class&nbsp;(data)</a></td>
+	<td class="summary">Table type 'class'.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x.array">x.array&nbsp;(permitted)</a></td>
+	<td class="summary">Table type 'array'.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x.hash">x.hash&nbsp;(key, value)</a></td>
+	<td class="summary">Table type 'hash'.</td>
+	</tr>
+</table>
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#x.version">x.version</a></td>
+	<td class="summary">Contains the version number of the library.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    
+    <dl class="function">
+    <dt>
+    <a name = "x.any"></a>
+    <strong>x.any&nbsp;(default)</strong>
+    </dt>
+    <dd>
+    A type permitted to be anything, including nil.  It imposes
+ no constraints and thus acts exactly like any other lua 
+ variable, although you can set a default value.
+
+ The default value is nil unless specified.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+       <li><code><em>default</em></code>:  The default value when this field is initalized.</li>
+    </ul>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x.string"></a>
+    <strong>x.string&nbsp;(default, nullable, pattern, max_length)</strong>
+    </dt>
+    <dd>
+    A type permitted to be a string.  It can be nullable or not;
+ have a maximum length; or be forced to pass a pattern match.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+       <li><code><em>default</em></code>:  The default value of this field. 
+			Normally nil if nullable, or the null string "" if not.</li>
+       <li><code><em>nullable</em></code>:  If true, this field can be set to nil. Default false.</li>
+       <li><code><em>pattern</em></code>:  A regular expression pattern that a set value must
+			match in order for the set to suceed. Default, not pattern
+			is enforced.</li>
+       <li><code><em>max_length</em></code>:  The maximum length, as determined by string.len,
+			that this field can be set to.</li>
+    </ul>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x.number"></a>
+    <strong>x.number&nbsp;(default, nullable, maximum, minimum)</strong>
+    </dt>
+    <dd>
+    A type containing a number, either integer or floating point. 
+
+    <h3>Parameters:</h3>
+    <ul>
+       <li><code><em>default</em></code>:  The default value of this field. 
+			Normally nil if nullable, or zero if not.</li>
+       <li><code><em>nullable</em></code>:  If true, this field can be set to nil. Default false.</li>
+       <li><code><em>maximum</em></code>:  The maximum value this field can be set to.</li>
+       <li><code><em>minimum</em></code>:  The minimum value this field can be set to.</li>
+    </ul>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x.bool"></a>
+    <strong>x.bool&nbsp;(default)</strong>
+    </dt>
+    <dd>
+    A boolean type. 
+
+ There isn't much to say or do with these, considering that they
+ by definition only have two states. In addition, Lua's handling
+ of them is pretty good already.
+
+ This exists purely to allow definition in other larger types.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+       <li><code><em>default</em></code>:  The default value, true or false. Defaults to false.</li>
+    </ul>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x.class"></a>
+    <strong>x.class&nbsp;(data)</strong>
+    </dt>
+    <dd>
+    Table type 'class'. 
+
+ A 'class' table acts like a table with a fixed set of
+ key/value pairs that are valid; and each parameter may have
+ a forced type as well.
+
+ Simply add functions and it behaves much like an object, except
+ it lacks inheritance.
+
+ Actual methods for the type are contained in deimos/class.lua.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+       <li><code><em>data</em></code>:  Key/value pairs that correspond to a field's name, and
+ 			a type as provided by other Deimos constructor functions.</li>
+    </ul>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x.array"></a>
+    <strong>x.array&nbsp;(permitted)</strong>
+    </dt>
+    <dd>
+    Table type 'array'. 
+
+ An 'array' table stays integer-indexed and enforces type
+ constraints on the values within.
+
+ Actual methods for the type are contained in deimos/array.lua.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+       <li><code><em>permitted</em></code>:  The permitted data type that can be contained
+			within the array, as provided by a deimos constructor
+			function.</li>
+    </ul>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x.hash"></a>
+    <strong>x.hash&nbsp;(key, value)</strong>
+    </dt>
+    <dd>
+    Table type 'hash'. 
+
+ An 'hash' type uses key-value pairs, like a Perl hashtable or
+ PHP associative array. It enforces constraints on both the
+ keys and the values within.
+
+ Actual methods for the type are contained in deimos/hash.lua.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+       <li><code><em>key</em></code>:  The data type permitted to be the key of a hash,
+			as provided by a deimos constructor function.</li>
+       <li><code><em>value</em></code>:  The permitted data type that can be contained
+			within the hash, as provided by a deimos constructor
+			function.</li>
+    </ul>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Fields"></a>Fields</h2>
+    
+    <dl class="function">
+    <dt>
+    <a name = "x.version"></a>
+    <strong>x.version</strong>
+    </dt>
+    <dd>
+    Contains the version number of the library. 
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
